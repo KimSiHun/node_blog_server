@@ -1,0 +1,25 @@
+{
+  "name": "node_blog_server",
+  "version": "1.0.0",
+  "description": "node_blog_server",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodejs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KimSiHun/node_blog_server.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "shkim",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/KimSiHun/node_blog_server/issues"
+  },
+  "homepage": "https://github.com/KimSiHun/node_blog_server#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
