@@ -1,23 +1,13 @@
-var express=require('express');
-var app = express();
-var http = require('http');
-var path = require('path');
-var fs = require('fs');
-var bodyParser = require('body-parser');
-var engine = require('ejs');
+const EventEmitter = require('events');
 
-var router = require('./routes');
+class MyEmitter extends EventEmitter{}
 
-app.set('port', 3000);
-app.set('views', path.join(__dirname,'/views'));
-app.set('view engine', 'ejs');
+const myEmitter = new MyEmitter();
 
-
-if('development' == app.get('env')){
-  app.use(express.errorHandler());
-}
-
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log(`Express Server listening on port ${app.get('port')}`);
+myEmitter.on('event', function(a,b){
+  console.log(a,b,this);
 });
+
+myEmitter.emit('event','a','b');
+
+myEmitter.emit('event','c','d');
