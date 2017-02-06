@@ -1,13 +1,23 @@
-const EventEmitter = require('events');
+var http = require("http"),
+    express = require("express"),
+    path = require("path"),
+    app = express(),
+    engine = require('ejs-locals'),
+    server = http.createServer(app);
 
-class MyEmitter extends EventEmitter{}
+var routes = require("./routes");
 
-const myEmitter = new MyEmitter();
+app.engine('ejs', engine);
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
 
-myEmitter.on('event', function(a,b){
-  console.log(a,b,this);
+app.use(routes);
+
+var ip = "localhost";
+var port = 5000;
+
+
+server.listen(port, ip, function() {
+    var addr = server.address();
+    console.log(`Server listening at ${ip}:${port}`);
 });
-
-myEmitter.emit('event','a','b');
-
-myEmitter.emit('event','c','d');
